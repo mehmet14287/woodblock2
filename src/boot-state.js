@@ -5,7 +5,7 @@ let BootState = {
     init: function()
     {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;       
+        game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;        
         game.scale.pageAlignHorizontally = true;
         game.scale.pageAlignVertically = false;
 
@@ -13,7 +13,7 @@ let BootState = {
         {            
             game.scale.forceOrientation(false, true);
             game.scale.enterIncorrectOrientation.add(this.onEnterIncorrectOrientation, this);
-            game.scale.leaveIncorrectOrientation.add(this.onLeaveIncorrectOrientation, this);           
+            game.scale.leaveIncorrectOrientation.add(this.onLeaveIncorrectOrientation, this);            
         }
 
         game.scale.onSizeChange.add(this.onSizeChange, this);
@@ -51,12 +51,12 @@ let BootState = {
     //
     resizeGame: function()
     {        
-        let wh = window.innerHeight;      
+        let wh = window.innerHeight;    
         R.prevWindowHeight = wh;        
 
-        let s = (R.BASE_GAME_HEIGHT + R.BANNER_HEIGHT) / parseInt(game.canvas.style.height);       
+        let s = (R.BASE_GAME_HEIGHT + R.BANNER_HEIGHT) / parseInt(game.canvas.style.height);        
 
-        R.gameHeight = R.BASE_GAME_HEIGHT + parseInt(R.BANNER_HEIGHT * s + 0.5);       
+        R.gameHeight = R.BASE_GAME_HEIGHT + parseInt(R.BANNER_HEIGHT * s + 0.5);        
 
         game.scale.setGameSize(R.BASE_GAME_WIDTH, R.gameHeight);        
     },
@@ -64,6 +64,10 @@ let BootState = {
     //
     preload: function()
     {
+        // ====> DÜZELTME 1: OYUNUN ANA ADRESİNİ TANIMLAMA <====
+        game.load.baseURL = 'https://mehmet14287.github.io/woodblock2/';
+
+        // ====> DÜZELTME 2: YAZIM HATASINI DÜZELTME <====
         game.load.atlas('loading', 'assets/loading.png', 'assets/loading.json');
     },
 
@@ -99,24 +103,16 @@ let BootState = {
 
     additionalAudioCheck: function()
     {
-        //second check sound
-        /*
-            Sharp = SH-01F
-            Fujitsu = F-01F
-            Xperia A = SO-04E
-            Sharp Mini = SHL24
-            */
-
         function isStock()
         {
             let matches = window.navigator.userAgent.match(/Android.*AppleWebKit\/([\d.]+)/);
             return matches && matches[1] < 537;
         }
 
-        let ua = navigator.userAgent; // Returns a string which tells you what device you're using
-        let isSharpStock = ((/SHL24|SH-01F/i).test(ua)) && isStock(); // Checks if device is, Sharp(SH-01F) or Sharp Mini(SHL24)
-        let isXperiaAStock = ((/SO-04E/i).test(ua)) && isStock(); // Checks if device is, Xperia A(SO-04E)
-        let isFujitsuStock = ((/F-01F/i).test(ua)) && isStock(); // Checks if device is, Fujitsu(F-01F)
+        let ua = navigator.userAgent;
+        let isSharpStock = ((/SHL24|SH-01F/i).test(ua)) && isStock();
+        let isXperiaAStock = ((/SO-04E/i).test(ua)) && isStock();
+        let isFujitsuStock = ((/F-01F/i).test(ua)) && isStock();
 
         if(isSharpStock || isXperiaAStock || isFujitsuStock) R.canAudio = false;
     }    
