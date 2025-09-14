@@ -13,58 +13,22 @@
     <meta name="apple-mobile-web-app-title" content="WoodBlocks">
     <link rel="stylesheet" href="styles.css" type="text/css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">      
-    
-    <script type="text/javascript" src="src/publisher.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <script type="text/javascript" src="src/fontfaceobserver.js"></script>
     <script type="text/javascript" src="src/phaser-no-physics.min.js"></script>
     <script type="text/javascript" src="src/main.js"></script>
-    <script type="text/javascript" src="src/boot-state.js"></script> 
-    <script type="text/javascript" src="src/load-state.js"></script> 
-    <script type="text/javascript" src="src/menu-state.js"></script>    
+    <script type="text/javascript" src="src/boot-state.js"></script>
+    <script type="text/javascript" src="src/load-state.js"></script>
+    <script type="text/javascript" src="src/menu-state.js"></script>
     <script type="text/javascript" src="src/play-state.js"></script>
     <script type="text/javascript" src="src/shapes.js"></script>
     <script type="text/javascript" src="src/well.js"></script>
-    <script type="text/javascript" src="src/rui.js"></script>  
+    <script type="text/javascript" src="src/rui.js"></script>
     <script type="text/javascript" src="src/tutorial.js"></script>
-
-    <script>
-        if(!window.googletag) {
-            var googletag = googletag || {};
-            googletag.cmd = googletag.cmd || [];
-            (function () {
-                var gads = document.createElement("script");
-                gads.async = true;
-                gads.type = "text/javascript";
-                var useSSL = "https:" == document.location.protocol;
-                gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
-                var node = document.getElementsByTagName("script")[0];
-                node.parentNode.insertBefore(gads, node);
-            })();
-        }
-    </script>
-
-    <script>
-        try {
-            googletag.cmd.push(function () {
-                Publisher.bannerSlot = googletag.defineSlot('/10947743/CONTENT_bannerAd_test', [320, 50], "top_banner");
-                Publisher.bannerSlot.addService(googletag.pubads());
-                googletag.enableServices();
-                Publisher.bannerSlot.setCollapseEmptyDiv(true);
-
-                Publisher.bannerSlot.setTargeting("p_game", [Publisher.gameCode]);
-            });
-        } catch(e){}
-    </script>
 
 </head>
 <body>
-    <div id="top_banner" style="width:320px; height:50px;">
-        <script type="text/javascript">
-            googletag.cmd.push(function () {googletag.display('top_banner');});
-        </script>
-    </div>
     <div id="canvas-wrapper">
         <span id="gameContainer"></span>
     </div>
